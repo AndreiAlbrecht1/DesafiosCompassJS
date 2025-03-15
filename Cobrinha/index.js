@@ -45,7 +45,7 @@ function comerComida() {
     gerarComida()
 }
 
-setInterval(movimentar, 1000)
+setInterval(movimentar, 500)
 
 function movimentar() {
     posicaoAtual = cobra[0]
@@ -67,9 +67,6 @@ function movimentar() {
             break;
     }
     JSON.stringify(cobra[0]) == JSON.stringify(comida) ? comerComida() : cortarRabo()
-    console.log(cobra);
-    console.log(cobra[0]);
-    console.log(comida);
     testarPosicao()
     mostrarCobra()
 }
