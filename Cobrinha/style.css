@@ -1,0 +1,17 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+.container__titulo{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    font-size: 60px;
+}
+
+.container__titulo img{
+    width: 250px;
+}
