@@ -1,10 +1,10 @@
-let cobra = [{x: 1, y: 1}]
+let cobra = [{x: 10, y: 10},{x: 11, y: 10}]
 let posicaoAtual = cobra[0]
 let direcaoAtual = "direita"
 let tecla = "ArrowRight"
 const movimentacao = {
-    cima: 'ArrowUp',
-    baixo: 'ArrowDown',
+    cima: 'ArrowDown',
+    baixo: 'ArrowUp',
     esquerda: 'ArrowLeft',
     direita: 'ArrowRight'
 };
@@ -31,9 +31,21 @@ function gerarComida() {
     for (let i = 0; i < cobra.length; i++) {
         JSON.stringify(cobra[i]) == JSON.stringify(z) ? gerarComida() : comida = z
     }
+
+    let aux = `${comida.x},${comida.y}`
+    let aux2 = document.getElementById(`${aux}`)
+    aux2.classList.remove('casa__mapa')
+    aux2.classList.add('fruta__mapa')    
+}
+function comerComida() {
+    let aux = `${comida.x},${comida.y}`
+    let aux2 = document.getElementById(`${aux}`)
+    aux2.classList.remove('fruta__mapa')
+    aux2.classList.add('casa__mapa')
+    gerarComida()
 }
 
-setInterval(movimentar, 2000)
+setInterval(movimentar, 1000)
 
 function movimentar() {
     posicaoAtual = cobra[0]
@@ -54,11 +66,12 @@ function movimentar() {
         default:
             break;
     }
-    JSON.stringify(cobra[0]) == JSON.stringify(comida) ? gerarComida() : cobra.pop()
+    JSON.stringify(cobra[0]) == JSON.stringify(comida) ? comerComida() : cortarRabo()
     console.log(cobra);
     console.log(cobra[0]);
     console.log(comida);
     testarPosicao()
+    mostrarCobra()
 }
 
 function testarPosicao() {
@@ -125,11 +138,26 @@ function criarMapa() {
         for (let i = 0; i < colunas; i++) {
             const casa = document.createElement('div')
             casa.classList.add('casa__mapa')
-            casa.id = {x: idX, y:idY}
-            casa.textContent = `${idX} , ${idY}`
+            casa.id = `${idX},${idY}`
+            // casa.textContent = `${idX} , ${idY}`
             mapa.appendChild(casa)
             idX++;
         }
         idY++;
     }
+}
+
+function mostrarCobra() {
+    let aux = `${cobra[0].x},${cobra[0].y}`
+    let aux2 = document.getElementById(`${aux}`)
+    aux2.classList.remove('casa__mapa')
+    aux2.classList.add('cobra__mapa')
+}
+
+function cortarRabo() {
+    let aux = `${cobra[cobra.length - 1].x},${cobra[cobra.length - 1].y}`
+    let aux2 = document.getElementById(`${aux}`)
+    aux2.classList.remove('cobra__mapa')
+    aux2.classList.add('casa__mapa')
+    cobra.pop()
 }
