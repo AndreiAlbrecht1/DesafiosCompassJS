@@ -8,7 +8,7 @@ const movimentacao = {
     esquerda: 'ArrowLeft',
     direita: 'ArrowRight'
 };
-let a = 0;
+let a = 7;
 
 const mapa = document.getElementById('mapa')
 const colunas = 20;
