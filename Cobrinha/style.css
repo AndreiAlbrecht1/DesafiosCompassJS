@@ -1,6 +1,11 @@
+/* Palheta de cores https://paletadecores.com/paleta/2b2318/524835/56704b/5d9e7e/78b3a4/ */
+
 body{
     background-color: black;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container__titulo{
@@ -14,4 +19,28 @@ body{
 
 .container__titulo img{
     width: 250px;
+}
+
+.container__map {
+    display: grid;
+    grid-template-columns: repeat(20, 30px);
+    grid-template-rows: repeat(20, 30px);
+}
+
+.casa__mapa {
+    background-color: #78b3a4;
+    border: 1px solid #5d9e7e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 8px;
+}
+
+.cobra__mapa {
+    background-color: #2b2318;
+}
+
+.fruta__mapa{
+    background-color: red;
 }

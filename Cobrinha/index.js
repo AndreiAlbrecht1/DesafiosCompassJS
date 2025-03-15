@@ -9,6 +9,12 @@ const movimentacao = {
     direita: 'ArrowRight'
 };
 
+const mapa = document.getElementById('mapa')
+const colunas = 20;
+const linhas = 20;
+
+criarMapa()
+
 document.addEventListener('keydown', (event) => {
     if (Object.values(movimentacao).includes(event.key)) {
         tecla = event.key;
@@ -107,5 +113,22 @@ function left() {
         direcaoAtual = "esquerda"
     } else {
         right()
+    }
+}
+
+
+function criarMapa() {
+    let idY = 1
+    for (let i = 0; i < linhas; i++) {
+        let idX = 1
+        for (let i = 0; i < colunas; i++) {
+            const casa = document.createElement('div')
+            casa.classList.add('casa__mapa')
+            casa.id = {x: idX, y:idY}
+            casa.textContent = `${idX} , ${idY}`
+            mapa.appendChild(casa)
+            idX++;
+        }
+        idY++;
     }
 }
