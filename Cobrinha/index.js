@@ -8,8 +8,6 @@ const movimentacao = {
     esquerda: 'ArrowLeft',
     direita: 'ArrowRight'
 };
-let a = 7;
-
 const mapa = document.getElementById('mapa')
 const colunas = 20;
 const linhas = 20;
@@ -22,7 +20,15 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-gerarComida()
+function startGame() {
+    gerarComida()
+    setInterval(movimentar, 500)
+}
+
+function gameOver() {
+    clearInterval(movimentar)
+}
+
 function gerarComida() {
     let x = Math.floor(Math.random() * (10 - 1) + 1)
     let y = Math.floor(Math.random() * (10 - 1) + 1)
@@ -37,6 +43,7 @@ function gerarComida() {
     aux2.classList.remove('casa__mapa')
     aux2.classList.add('fruta__mapa')    
 }
+
 function comerComida() {
     let aux = `${comida.x},${comida.y}`
     let aux2 = document.getElementById(`${aux}`)
@@ -44,8 +51,6 @@ function comerComida() {
     aux2.classList.add('casa__mapa')
     gerarComida()
 }
-
-setInterval(movimentar, 500)
 
 function movimentar() {
     posicaoAtual = cobra[0]
@@ -80,10 +85,6 @@ function testarPosicao() {
             gameOver()
         } 
     }
-}
-
-function gameOver() {
-    // alert("perdeu o jogo")
 }
 
 function upper() {
@@ -126,7 +127,6 @@ function left() {
         right()
     }
 }
-
 
 function criarMapa() {
     let idY = 1
