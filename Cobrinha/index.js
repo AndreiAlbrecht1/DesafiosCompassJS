@@ -2,6 +2,7 @@ let cobra = [{x: 10, y: 10},{x: 11, y: 10}]
 let posicaoAtual = cobra[0]
 let direcaoAtual = "direita"
 let tecla = "ArrowRight"
+let jogoAtivo
 const movimentacao = {
     cima: 'ArrowDown',
     baixo: 'ArrowUp',
@@ -12,21 +13,23 @@ const mapa = document.getElementById('mapa')
 const colunas = 20;
 const linhas = 20;
 
+
 criarMapa()
 
 document.addEventListener('keydown', (event) => {
     if (Object.values(movimentacao).includes(event.key)) {
         tecla = event.key;
+        event.preventDefault();
     }
 });
 
 function startGame() {
     gerarComida()
-    setInterval(movimentar, 500)
+    jogoAtivo = setInterval(movimentar, 250)
 }
 
 function gameOver() {
-    clearInterval(movimentar)
+    clearInterval(jogoAtivo)
 }
 
 function gerarComida() {
@@ -35,8 +38,12 @@ function gerarComida() {
     let z = {x:x, y:y}
 
     for (let i = 0; i < cobra.length; i++) {
-        JSON.stringify(cobra[i]) == JSON.stringify(z) ? gerarComida() : comida = z
+        if (JSON.stringify(cobra[i]) === JSON.stringify(z)) {
+            return gerarComida();
+        }
     }
+
+    comida = z;
 
     let aux = `${comida.x},${comida.y}`
     let aux2 = document.getElementById(`${aux}`)
@@ -77,7 +84,7 @@ function movimentar() {
 }
 
 function testarPosicao() {
-    if (cobra[0].x < 1 || cobra[0].x > 10 || cobra[0].y < 1 || cobra[0].y > 10) {
+    if (cobra[0].x < 1 || cobra[0].x > colunas || cobra[0].y < 1 || cobra[0].y > linhas) {
         gameOver()
     }
     for (let i = 1; i < cobra.length; i++) {

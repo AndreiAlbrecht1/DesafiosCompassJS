@@ -6,6 +6,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
+    padding: 0 0 20px 0;
 }
 
 .container__titulo{
@@ -14,11 +16,11 @@ body{
     align-items: center;
     justify-content: center;
     gap: 30px;
-    font-size: 60px;
+    font-size: 40px;
 }
 
 .container__titulo img{
-    width: 160px;
+    width: 140px;
 }
 
 .container__map {
