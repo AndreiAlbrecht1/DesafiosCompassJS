@@ -1,8 +1,13 @@
-let stringTestada = "A base do teto desaba"
+function verificarPalindromo(string) {
+    const stringFiltrada = string.toLowerCase().replace(/\s+/g,'')
+    const stringFiltradaInvertida = stringFiltrada.split('').reverse().join('')
+    
+    return((stringFiltrada == stringFiltradaInvertida));
+}
 
-const stringFiltrada = stringTestada.toLowerCase().replace(/\s+/g,'')
-const stringFiltradaInvertida = stringFiltrada.split('').reverse().join('')
+console.log(verificarPalindromo("arara"))
+console.log(verificarPalindromo("A base do teto desaba"))
+console.log(verificarPalindromo("xpto"))
 
-console.log((stringFiltrada == stringFiltradaInvertida));
 
 

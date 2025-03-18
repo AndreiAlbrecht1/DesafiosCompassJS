@@ -1,20 +1,15 @@
-const vetor = [1, 2, 3, 4, 5]
-let somaDoVetor = 0
-
-for (let i = 0; i < vetor.length; i++) {
-    if (typeof vetor[i] !== 'number') {
-        informarValorInvalido()
-        return
-    } else {
-        calcularSomaVetor(vetor[i])
+function somarVetor(vetor) {
+    let somaDoVetor = 0
+    for (let i = 0; i < vetor.length; i++) {
+        if (typeof vetor[i] !== 'number') {
+            return 'Valor inválido detectado'
+        } else {
+            somaDoVetor += vetor[i]
+        }
     }
-}
-function informarValorInvalido() {
-    console.log("Valor invalido detectado");
+    return somaDoVetor
 }
 
-function calcularSomaVetor(item) {
-    somaDoVetor += item
-}
-
-console.log(somaDoVetor)
+console.log(somarVetor([1, 2, 3, 4, 5]))
+console.log(somarVetor([-1, 10, 20]))
+console.log(somarVetor([[45, 5, "xpto"]]))
