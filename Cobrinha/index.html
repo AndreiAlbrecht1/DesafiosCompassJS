@@ -9,11 +9,27 @@
 </head>
 <body>
     <div class="container__titulo">
-        <img src="/assets/Snake.png" alt="Logo Snake">
+        <img src="assets/Snake.png" alt="Logo Snake">
         <h1>Snake Game</h1>
-        <img src="/assets/Snake.png" alt="Logo Snake">
+        <img src="assets/Snake.png" alt="Logo Snake">
     </div>
-    <div class="container__btn" id="container__btn"></div>
+
+    <div id="scoreBoard" class="container__score">
+        <span id="scoreAtual">Score atual: 0</span>
+        <span id="scoreRecord">Record: 0</span>
+    </div>
+
+    <div id="gameStart" class="container__btn">
+        <button id="startButton">Iniciar Jogo</button>
+    </div>
+
+    <div id="gameRestart" class="container__btn">
+        <span id="scoreFinal">Seu Score Final:</span>
+        <button id="restartButton">Reiniciar Jogo</button>
+    </div>
+
+
+
     <div class="container__map" id="mapa"></div>
 </body>
 </html>
